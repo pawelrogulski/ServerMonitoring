@@ -1,8 +1,10 @@
 package com.example.servermonitoring.componentsService;
 
+import com.example.servermonitoring.components.NetworkInterface;
+
 import java.math.BigDecimal;
 
-import static com.example.linuxcmd.componentsService.Commands.getCommandOutput;
+import static com.example.servermonitoring.componentsService.Commands.getCommandOutput;
 
 public class MultithreadSpeedTest extends Thread {
     String trafficDirection; //tx lub rx
