@@ -116,8 +116,14 @@ public class Commands {
 
     public List<Disk> disks(){ //zwraca nazwy, całkowite miejsce oraz zajęte miejsce dysków w systemie
         List<String> output = getCommandOutput("df -x tmpfs -h");
-        output.remove(0);
         List<Disk> disks = new ArrayList<>();
+        if(output.size()<=1){
+            return disks;
+        }
+        output.remove(0);
+        if(output.size()==0){
+            return disks;
+        }
         for (String s : output){
             disks.add(
                     new Disk(s.split("\\s++")[0] //nazwa
