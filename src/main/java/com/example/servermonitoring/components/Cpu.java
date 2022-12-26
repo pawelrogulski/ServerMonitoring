@@ -1,11 +1,22 @@
 package com.example.servermonitoring.components;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public class Cpu {
     private String name;
     private String usage;
+
+    public Cpu(String name, String usage) {
+        this.name = name;
+        this.usage = usage;
+    }
+
+    public Cpu() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUsage() {
+        return usage;
+    }
 }

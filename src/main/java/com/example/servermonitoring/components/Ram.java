@@ -1,10 +1,22 @@
 package com.example.servermonitoring.components;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-@AllArgsConstructor
-@Getter
 public class Ram {
     private String totalMemory;
     private String inUse;
+
+    public Ram(String totalMemory, String inUse) {
+        this.totalMemory = totalMemory;
+        this.inUse = inUse;
+    }
+
+    public Ram() {
+    }
+
+    public String getTotalMemory() {
+        return totalMemory;
+    }
+
+    public String getInUse() {
+        return inUse;
+    }
 }

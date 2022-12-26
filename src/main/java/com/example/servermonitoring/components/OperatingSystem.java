@@ -1,12 +1,7 @@
 package com.example.servermonitoring.components;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.util.List;
 
-@AllArgsConstructor
-@Getter
+
 public class OperatingSystem {
     private String hostname;
     private String uptime;
@@ -14,4 +9,40 @@ public class OperatingSystem {
     private Ram ram;
     private List<Disk> disks;
     private List<NetworkInterface> networkInterfaces;
+
+    public OperatingSystem(String hostname, String uptime, Cpu cpu, Ram ram, List<Disk> disks, List<NetworkInterface> networkInterfaces) {
+        this.hostname = hostname;
+        this.uptime = uptime;
+        this.cpu = cpu;
+        this.ram = ram;
+        this.disks = disks;
+        this.networkInterfaces = networkInterfaces;
+    }
+
+    public OperatingSystem() {
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public String getUptime() {
+        return uptime;
+    }
+
+    public Cpu getCpu() {
+        return cpu;
+    }
+
+    public Ram getRam() {
+        return ram;
+    }
+
+    public List<Disk> getDisks() {
+        return disks;
+    }
+
+    public List<NetworkInterface> getNetworkInterfaces() {
+        return networkInterfaces;
+    }
 }

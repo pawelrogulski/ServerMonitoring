@@ -3,6 +3,8 @@ package com.example.servermonitoring.controller;
 import com.example.servermonitoring.components.OperatingSystem;
 import com.example.servermonitoring.componentsService.Commands;
 import com.example.servermonitoring.monitoringService.AppService;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +25,7 @@ public class AppController {
     private final AppService appService;
 
     @GetMapping(path = "/hardware_usage")
-    public OperatingSystem showHardwareUsage(){
-        return commands.systemInfo();
-    }
+    public OperatingSystem showHardwareUsage(){return commands.systemInfo();}
 
     @GetMapping("servers")
     public List<OperatingSystem> showAllServers(){
@@ -35,10 +36,17 @@ public class AppController {
             try{
                 RestTemplate restTemplate = new RestTemplate();
                 String server = restTemplate.getForObject(uri, String.class);
-//                OperatingSystem operatingSystem = objectMapper.readValue(server, OperatingSystem.class);
-                OperatingSystem operatingSystem = appService.convertToOS(server);
+                OperatingSystem operatingSystem = objectMapper.readValue(server, OperatingSystem.class);
                 servers.add(operatingSystem);
-            }catch (Exception e){}
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+            } catch (JsonGenerationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
         return servers;
     }
