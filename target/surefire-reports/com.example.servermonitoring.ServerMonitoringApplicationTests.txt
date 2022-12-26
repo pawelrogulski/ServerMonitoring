@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.servermonitoring.ServerMonitoringApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.417 s - in com.example.servermonitoring.ServerMonitoringApplicationTests

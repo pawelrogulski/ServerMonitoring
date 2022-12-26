@@ -1,0 +1,15 @@
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/domain/MyUserDetails.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/monitoringService/Service.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/domain/Role.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/components/NetworkInterface.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/components/Cpu.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/componentsService/Commands.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/security/SecurityConfiguration.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/components/OperatingSystem.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/domain/User.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/ServerMonitoringApplication.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/components/Disk.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/componentsService/MultithreadSpeedTest.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/controller/AppController.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/components/Ram.java
+/home/pawel/Desktop/ServerMonitoring/src/main/java/com/example/servermonitoring/domain/Server.java
