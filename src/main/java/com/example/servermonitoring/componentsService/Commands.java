@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class Commands {
-    public OperatingSystem systemInfo(){ // główna funkcja zwracająca dane z innych funkcji
+    public OperatingSystem systemInfo(){ // główna metoda zwracająca dane z innych funkcji
         return new OperatingSystem(hostname(),uptime(),cpu(),ram(),disks(),networkInterfaces());
     }
 
@@ -24,7 +24,7 @@ public class Commands {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             while ((s = br.readLine()) != null) {
-                output.add(s);
+                output.add(s); //wynik polecenia jest zapisywany w liście, każda linia wyniku polecenia to jeden element listy
             }
             p.waitFor();
             p.destroy();
@@ -33,7 +33,7 @@ public class Commands {
     }
     public Cpu cpu(){
         return new Cpu(cpuName(),cpuUsage()+'%');
-    }//funkcja korzystająca z dwóch innych funkcji
+    }//metoda korzystająca z dwóch podrzędnych metod
 
     public String cpuName(){ //zwraca nazwe procesora w systemie operacyjnym
         List<String> output4 = getCommandOutput("cat /proc/cpuinfo");
@@ -51,28 +51,28 @@ public class Commands {
 
     public Ram ram(){ //zwraca całkowitą pamięć operacyjną oraz obecne jej wykorzystanie
         List<String> output = getCommandOutput("cat /proc/meminfo");
-        String[] all = output
+        String[] totalMemory = output //całkowita pamięć operacyjna
                 .stream()
                 .filter(s -> s.contains("MemTotal"))
                 .collect(Collectors.toList())
                 .get(0)
                 .split("\\W+");
-        String[] available = output
+        String[] availableMemory = output //dostępna pamięć operacyjna
                 .stream().filter(s -> s.contains("MemAvailable"))
                 .collect(Collectors.toList())
                 .get(0)
                 .split("\\W+");
-        float all2 = Float.parseFloat(all[1]);
-        float available2 = Float.parseFloat(available[1]);
-        float percentage = (all2-available2)/all2*100;
-        all2 = all2/1024/1024;
-        String all4 = Float.toString(all2);
-        all4 = all4.substring(0,all4.indexOf(".")+2);
-        return new Ram(all4.concat(" GB") //całkowita pamięć operacyjna
+        float total = Float.parseFloat(totalMemory[1]);
+        float available = Float.parseFloat(availableMemory[1]);
+        float percentage = (total-available)/total*100;
+        total = total/1024/1024; //całkowita pamięć operacyjna w gigabajtach
+        String totalGB = Float.toString(total);
+        totalGB = totalGB.substring(0,totalGB.indexOf(".")+2); //całkowita pamięć operacyjna w gigabajtach z dokładnością do 2 miejsca po przecinku
+        return new Ram(totalGB.concat(" GB") //całkowita pamięć operacyjna
                 ,String.format("%.2f%%",percentage)); //użycie pamięci operacyjnej
     }
 
-    public String uptime(){ //zwraca czas od włączenia systemu
+    public String uptime(){ //zwraca czas od uruchomienia systemu
         String output = getCommandOutput("uptime")
                 .get(0)
                 .split("\\s++")[3]

@@ -1,7 +1,6 @@
 package com.example.servermonitoring.components;
 import java.util.List;
-
-
+/** konstruktory, metody get oraz metody set zostały wpisane ręcznie przez konflikt biblioteki Lombok z mapowaniem obiektów w JSON'em **/
 public class OperatingSystem {
     private String hostname;
     private String uptime;

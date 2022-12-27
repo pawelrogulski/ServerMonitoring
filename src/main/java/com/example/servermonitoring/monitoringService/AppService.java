@@ -22,4 +22,10 @@ public class AppService {
                 .map(Server::getUrl)
                 .collect(Collectors.toList());
     }
+
+    public Server saveServer(String serverURL){
+        Server server = new Server();
+        server.setUrl(serverURL);
+        return serverRepository.save(server);
+    }
 }

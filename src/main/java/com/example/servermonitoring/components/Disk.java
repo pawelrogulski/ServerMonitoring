@@ -1,5 +1,5 @@
 package com.example.servermonitoring.components;
-
+/** konstruktory, metody get oraz metody set zostały wpisane ręcznie przez konflikt biblioteki Lombok z mapowaniem obiektów w JSON'em **/
 public class Disk {
     private String name;
     private String totalSpace;
