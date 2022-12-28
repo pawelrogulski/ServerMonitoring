@@ -36,17 +36,17 @@ public class Commands {
     }//metoda korzystająca z dwóch podrzędnych metod
 
     public String cpuName(){ //zwraca nazwe procesora w systemie operacyjnym
-        List<String> output4 = getCommandOutput("cat /proc/cpuinfo");
-        List<String> nameLine = output4.stream().filter(line -> line.contains("model name")).collect(Collectors.toList());
+        List<String> output = getCommandOutput("cat /proc/cpuinfo");
+        List<String> nameLine = output.stream().filter(line -> line.contains("model name")).collect(Collectors.toList());
         String name = nameLine.get(0);
         return name.substring(name.indexOf(":")+2,name.length());
     }
     public String cpuUsage(){ //zwraca poziom użycia procesora w systemie operacyjnym
         List<String> output = getCommandOutput("mpstat");
-        String output2 = output.get(3);
-        output2 = output2.replaceAll("\\s+","");
-        int i = output2.indexOf("all");
-        return output2.substring(i+3,i+7);
+        String usage = output.get(3);
+        usage = usage.replaceAll("\\s+","");
+        int index = usage.indexOf("all");
+        return usage.substring(index+3,index+7);
     }
 
     public Ram ram(){ //zwraca całkowitą pamięć operacyjną oraz obecne jej wykorzystanie
