@@ -1,6 +1,6 @@
 package com.example.servermonitoring.controller;
 
-import com.example.servermonitoring.components.OperatingSystem;
+import com.example.servermonitoring.domain.Resources;
 import com.example.servermonitoring.componentsService.Commands;
 import com.example.servermonitoring.domain.Server;
 import com.example.servermonitoring.monitoringService.AppService;
@@ -23,19 +23,19 @@ public class AppController {
     private final AppService appService;
 
     @GetMapping(path = "/hardware_usage")
-    public OperatingSystem showHardwareUsage(){return commands.systemInfo();}
+    public Resources showHardwareUsage(){return commands.systemInfo();}
 
     @GetMapping("/servers")
-    public List<OperatingSystem> showAllServers(){
+    public List<Resources> showAllServers(){
         ObjectMapper objectMapper = new ObjectMapper();
         List<String> serverURLs = appService.getAllServers();
-        List<OperatingSystem> servers = new ArrayList<>();
+        List<Resources> servers = new ArrayList<>();
         for(String url : serverURLs){
             try{
                 RestTemplate restTemplate = new RestTemplate();
                 String server = restTemplate.getForObject(url, String.class);
-                OperatingSystem operatingSystem = objectMapper.readValue(server, OperatingSystem.class);
-                servers.add(operatingSystem);
+                Resources resources = objectMapper.readValue(server, Resources.class);
+                servers.add(resources);
             } catch (JsonMappingException e) {
                 e.printStackTrace();
             } catch (JsonGenerationException e) {

@@ -1,13 +1,11 @@
 package com.example.servermonitoring.domain;
 
-import jakarta.persistence.*;
-import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "servers")
+@Document(collection = "server")
 public class Server {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String url;
 

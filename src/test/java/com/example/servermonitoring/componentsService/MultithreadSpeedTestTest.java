@@ -1,7 +1,6 @@
 package com.example.servermonitoring.componentsService;
 
-import com.example.servermonitoring.components.NetworkInterface;
-import org.junit.Assert;
+import com.example.servermonitoring.domain.NetworkInterface;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

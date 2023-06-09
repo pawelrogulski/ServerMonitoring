@@ -1,6 +1,6 @@
 package com.example.servermonitoring.componentsService;
 
-import com.example.servermonitoring.components.*;
+import com.example.servermonitoring.domain.*;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class Commands {
-    public OperatingSystem systemInfo(){ // główna metoda zwracająca dane z innych funkcji
-        return new OperatingSystem(hostname(),uptime(),cpu(),ram(),disks(),networkInterfaces());
+    public Resources systemInfo(){ // główna metoda zwracająca dane z innych funkcji
+        return new Resources(hostname(),uptime(),cpu(),ram(),disks(),networkInterfaces());
     }
 
     public static List<String> getCommandOutput(String command){ //zwraca wynik polecenia w systemie operacyjnym Linux

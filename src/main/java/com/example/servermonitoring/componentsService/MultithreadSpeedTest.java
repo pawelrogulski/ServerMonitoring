@@ -1,6 +1,6 @@
 package com.example.servermonitoring.componentsService;
 
-import com.example.servermonitoring.components.NetworkInterface;
+import com.example.servermonitoring.domain.NetworkInterface;
 
 import java.math.BigDecimal;
 
